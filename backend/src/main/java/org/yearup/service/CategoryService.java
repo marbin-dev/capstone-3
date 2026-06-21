@@ -31,8 +31,7 @@ public class CategoryService
 
     public Category create(Category category)
     {
-        // create a new category
-        category.setCategoryId(0);
+        // create a new category;
         return categoryRepository.save(category);
     }
 
