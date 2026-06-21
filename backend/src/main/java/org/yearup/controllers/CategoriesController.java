@@ -69,7 +69,7 @@ public class CategoriesController {
     @PreAuthorize("hasRole('ADMIN')")
     public Category updateCategory(@PathVariable int id, @RequestBody Category category) {
         // update the category by id and return the updated category (200 OK)
-        return null;
+        return categoryService.update(id,category);
     }
 
 
