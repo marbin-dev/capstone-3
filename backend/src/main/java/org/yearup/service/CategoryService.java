@@ -18,8 +18,9 @@ public class CategoryService
 
     public List<Category> getAllCategories()
     {
+
         // get all categories
-        return null;
+        return ;
     }
 
     public Category getById(int categoryId)
