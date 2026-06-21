@@ -58,8 +58,9 @@ public class CategoriesController {
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Category> addCategory(@RequestBody Category category) {
+        Category categoryCreated = categoryService.create(category);
         // insert the category and return it with status 201 Created
-        return null;
+        return ResponseEntity.status(201).body(categoryCreated);
     }
 
     // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
