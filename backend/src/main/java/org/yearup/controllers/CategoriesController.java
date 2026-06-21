@@ -2,6 +2,7 @@ package org.yearup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.yearup.models.Category;
 import org.yearup.models.Product;
@@ -31,12 +32,14 @@ public class CategoriesController {
     }
 
     // add the appropriate annotation for a get action
+    @GetMapping
     public List<Category> getAll() {
         // find and return all categories
         return null;
     }
 
     // add the appropriate annotation for a get action
+    @GetMapping("/{id}")
     public Category getById(@PathVariable int id) {
         // get the category by id
         return null;
@@ -52,6 +55,8 @@ public class CategoriesController {
 
     // add annotation to call this method for a POST action
     // add annotation to ensure that only an ADMIN can call this function
+    @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Category> addCategory(@RequestBody Category category) {
         // insert the category and return it with status 201 Created
         return null;
@@ -59,6 +64,8 @@ public class CategoriesController {
 
     // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
     // add annotation to ensure that only an ADMIN can call this function
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public Category updateCategory(@PathVariable int id, @RequestBody Category category) {
         // update the category by id and return the updated category (200 OK)
         return null;
@@ -67,6 +74,8 @@ public class CategoriesController {
 
     // add annotation to call this method for a DELETE action - the url path must include the categoryId
     // add annotation to ensure that only an ADMIN can call this function
+    @DeleteMapping("(/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> deleteCategory(@PathVariable int id) {
         // delete the category by id and return status 204 No Content
         return null;
