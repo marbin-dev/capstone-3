@@ -20,13 +20,13 @@ public class CategoryService
     {
 
         // get all categories
-        return ;
+        return categoryRepository.findAll();
     }
 
     public Category getById(int categoryId)
     {
         // get category by id
-        return null;
+        return categoryRepository.findById(categoryId).orElse(null);
     }
 
     public Category create(Category category)
