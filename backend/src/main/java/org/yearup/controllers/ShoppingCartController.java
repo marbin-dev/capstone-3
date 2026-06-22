@@ -48,7 +48,8 @@ public class ShoppingCartController {
         User user = userService.getByUserName(userName);
         int userId = user.getId();
 
-        ShoppingCart cart = shoppingCartService;
+        ShoppingCart cart = shoppingCartService.addProduct(userId,productId);
+        
         return ResponseEntity.status(201).body(cart);
     }
 
