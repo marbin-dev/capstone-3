@@ -1,7 +1,8 @@
 package org.yearup.controllers;
 
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.yearup.models.ShoppingCart;
@@ -16,15 +17,20 @@ import java.security.Principal;
 @RestController
 @RequestMapping("/cart")
 @PreAuthorize("hasRole('ROLE_USER')")
+@CrossOrigin
 public class ShoppingCartController
 {
     // a shopping cart controller depends on the service layer
     private ShoppingCartService shoppingCartService;
     private UserService userService;
 
-
+    public ShoppingCartController(ShoppingCartService shoppingCartService, UserService userService) {
+        this.shoppingCartService = shoppingCartService;
+        this.userService = userService;
+    }
 
     // each method in this controller requires a Principal object as a parameter
+    @GetMapping
     public ShoppingCart getCart(Principal principal)
     {
         // get the currently logged in username
