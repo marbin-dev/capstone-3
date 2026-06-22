@@ -1,6 +1,5 @@
 package org.yearup.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.yearup.models.CartItem;
 import org.yearup.models.Product;
@@ -21,7 +20,7 @@ public class ShoppingCartService {
         this.productService = productService;
     }
 
-   
+
     public ShoppingCart getByUserId(int userId) {
         // load the user's cart rows, look up each product, and build the ShoppingCart
         ShoppingCart cart = new ShoppingCart();
@@ -38,6 +37,8 @@ public class ShoppingCartService {
 
         return cart;
     }
+
+
 
     // add additional methods here
 }
