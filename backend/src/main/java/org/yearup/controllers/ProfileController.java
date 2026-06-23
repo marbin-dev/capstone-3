@@ -40,6 +40,6 @@ public class ProfileController {
 
         int userId = user.getId();
 
-        return profileService.
+        return profileService.update(userId,profile);
     }
 }
