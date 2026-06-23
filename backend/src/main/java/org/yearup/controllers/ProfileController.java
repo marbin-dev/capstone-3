@@ -33,6 +33,6 @@ public class ProfileController {
         User user = userService.getByUserName(userName);
         int userId = user.getId();
 
-        return profileService.get
+        return profileService.getByUserId(userId);
     }
 }
