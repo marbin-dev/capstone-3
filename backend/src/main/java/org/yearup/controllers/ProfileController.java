@@ -34,7 +34,7 @@ public class ProfileController {
     }
 
     @PutMapping
-    public Profile updateProfile(@PathVariable Profile profile,Principal principal){
+    public Profile updateProfile(@RequestBody Profile profile,Principal principal){
         String userName = principal.getName();
         User user = userService.getByUserName(userName);
 

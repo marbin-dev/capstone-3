@@ -27,6 +27,10 @@ public class ProfileService
 
         Profile existing = profileRepository.findByUserId(userId);
 
+        if(existing == null){
+            return null;
+        }
+
         existing.setFirstName(profile.getFirstName());
         existing.setLastName(profile.getLastName());
         existing.setPhone(profile.getPhone());
