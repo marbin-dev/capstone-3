@@ -1,6 +1,7 @@
 package org.yearup.controllers;
 
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,13 +29,15 @@ public class OrdersController {
     }
 
     @PostMapping
-    public Order checkout(Principal principal){
+    public ResponseEntity<Order> checkout(Principal principal){
         String userName = principal.getName();
 
         User user = userService.getByUserName(userName);
         int userId = user.getId();
 
-        return orderService.checkout(userId);
+        Order order = orderService.checkout(userId);
+
+        return ResponseEntity.status(201).body(order);
     }
 
 }
