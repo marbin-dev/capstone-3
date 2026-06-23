@@ -49,7 +49,7 @@ public class ShoppingCartController {
         User user = userService.getByUserName(userName);
         int userId = user.getId();
 
-        ShoppingCart cart = shoppingCartService.addProduct(userId,productId);
+        ShoppingCart cart = shoppingCartService.addProduct(userId, productId);
 
         return ResponseEntity.status(201).body(cart);
     }
@@ -59,18 +59,26 @@ public class ShoppingCartController {
     // https://localhost:8080/cart/products/15  (15 is the productId to be updated)
     // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated; return the cart (200 OK)
     @PutMapping("/products/{productId}")
-    public ResponseEntity<ShoppingCart> updateItem(@PathVariable int productId, @RequestBody ShoppingCartItem shoppingCartItem, Principal principal){
+    public ResponseEntity<ShoppingCart> updateItem(@PathVariable int productId, @RequestBody ShoppingCartItem shoppingCartItem, Principal principal) {
         String userName = principal.getName();
 
         User user = userService.getByUserName(userName);
         int userId = user.getId();
 
-        ShoppingCart cart = shoppingCartService.updateProduct(userId,productId,shoppingCartItem.getQuantity());
+        ShoppingCart cart = shoppingCartService.updateProduct(userId, productId, shoppingCartItem.getQuantity());
         return ResponseEntity.ok(cart);
     }
 
 
     // add a DELETE method to clear all products from the current users cart
     // https://localhost:8080/cart  - return the (now empty) cart so the front end can refresh it (200 OK)
+    @DeleteMapping
+    public ResponseEntity<ShoppingCart> deleteCart(Principal principal){
+        String userName = principal.getName();
 
+        User user = userService.getByUserName(userName);
+        int userId = user.getId();
+
+        ShoppingCart cart =shoppingCartService;
+    }
 }
