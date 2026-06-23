@@ -45,7 +45,7 @@ public class CategoriesController {
         // get the category by id
         Category category = categoryService.getById(id);
 
-        if(category == null){
+        if (category == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(category);
@@ -75,7 +75,7 @@ public class CategoriesController {
     @PreAuthorize("hasRole('ADMIN')")
     public Category updateCategory(@PathVariable int id, @RequestBody Category category) {
         // update the category by id and return the updated category (200 OK)
-        return categoryService.update(id,category);
+        return categoryService.update(id, category);
     }
 
 
