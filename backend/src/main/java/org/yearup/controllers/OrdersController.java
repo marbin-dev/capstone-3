@@ -6,7 +6,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.yearup.models.Order;
+import org.yearup.models.User;
+import org.yearup.service.OrderService;
 import org.yearup.service.UserService;
+
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/orders")
@@ -23,6 +28,13 @@ public class OrdersController {
     }
 
     @PostMapping
-    public Order chec
+    public Order checkout(Principal principal){
+        String userName = principal.getName();
+
+        User user = userService.getByUserName(userName);
+        int userId = user.getId();
+
+        return orderService.checkout(userId);
+    }
 
 }
