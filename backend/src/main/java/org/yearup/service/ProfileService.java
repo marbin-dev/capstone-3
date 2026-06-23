@@ -20,6 +20,6 @@ public class ProfileService
     }
 
     public  Profile getByUserId(int userId){
-        return profileRepository.findUserById(userId);
+        return profileRepository.findByUserId(userId);
     }
 }
