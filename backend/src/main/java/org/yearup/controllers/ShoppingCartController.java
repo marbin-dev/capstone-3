@@ -65,7 +65,8 @@ public class ShoppingCartController {
         User user = userService.getByUserName(userName);
         int userId = user.getId();
 
-        ShoppingCart cart = shoppingCartService
+        ShoppingCart cart = shoppingCartService.updateProduct(userId,productId,shoppingCartItem.getQuantity());
+        return ResponseEntity.ok(cart);
     }
 
 
