@@ -26,6 +26,15 @@ public class OrderLineItem {
     @Column(name = "discount")
     private double discount;
 
+    public OrderLineItem() {
+        this.orderLineItemId = orderLineItemId;
+        this.orderId = orderId;
+        this.productId = productId;
+        this.salesPrice = salesPrice;
+        this.quantity = quantity;
+        this.discount = discount;
+    }
+
     public int getOrderLineItemId() {
         return orderLineItemId;
     }
