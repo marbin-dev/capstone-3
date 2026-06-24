@@ -27,14 +27,16 @@ The project uses a layered architecture with controllers, services, repositories
 - JWT
 - Insomnia
 - IntelliJ IDEA
-- 
 ## My personal challenges
-One of my biggest challenges was learning how to work with an existing Spring Boot project instead of building everything from scratch. I had to understand how the controllers, services, repositories, models, and security classes worked together before adding new features.
+At the beginning of this academy, I struggled a lot with programming. My first capstone was very challenging, but I was able to complete it and pass.
 
-Another challenge was debugging API status codes like `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, and `500 Internal Server Error`. This helped me understand authentication, authorization, and how to return the correct response from the backend.
+For my second capstone, I started asking more questions, studying more, and spending more time practicing my programming skills. That helped strengthen my knowledge and made me feel more prepared.
 
-I also had to practice tracing bugs through different layers of the application. For example, fixing the product stock update bug required checking the controller, service, model, and database fields.
+Now, in this final capstone, one of my biggest challenges was learning how to work with an existing Spring Boot project instead of building everything from scratch. I had to understand how the controllers, services, repositories, models, and security classes worked together before adding new features.
 
+Another challenge was debugging API status codes like `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, and `500 Internal Server Error`. This helped me understand authentication, authorization, request bodies, and how to return the correct response from the backend.
+
+For this capstone, I was able to work with more confidence. I learned how to ask better questions, use the right support, and keep debugging until the application worked. This project showed me how much you can learn when you fully commit yourself to the process.
 ## Code I Am Most Proud Of
 
 The code I am most proud of is my `ShoppingCartController`. I wrote the `GET`, `POST`, `PUT`, and `DELETE` methods to manage a user's shopping cart.
