@@ -2,9 +2,9 @@
 
 ## Description
 
-This project is a Spring Boot backend API for an e-commerce website. The API supports product browsing, category management, shopping cart features, user profiles, and checkout/order creation.
+### This project is a Spring Boot backend API for an e-commerce website. The API supports product browsing, category management, shopping cart features, user profiles, and checkout/order creation.
 
-The project uses a layered architecture with controllers, services, repositories, and models. The backend connects to a MySQL database and uses JWT authentication for protected endpoints.
+### The project uses a layered architecture with controllers, services, repositories, and models. The backend connects to a MySQL database and uses JWT authentication for protected endpoints.
 
 ## Features
 
@@ -30,7 +30,7 @@ The project uses a layered architecture with controllers, services, repositories
 ## My personal challenges
 At the beginning of this academy, I struggled a lot with programming. My first capstone was very challenging, but I was able to complete it and pass.
 
-For my second capstone, I started asking more questions, studying more, and spending more time practicing my programming skills. That helped strengthen my knowledge and made me feel more prepared.
+ For my second capstone, I started asking more questions, studying more, and spending more time practicing my programming skills. That helped strengthen my knowledge and made me feel more prepared.
 
 Now, in this final capstone, one of my biggest challenges was learning how to work with an existing Spring Boot project instead of building everything from scratch. I had to understand how the controllers, services, repositories, models, and security classes worked together before adding new features.
 
@@ -42,7 +42,59 @@ For this capstone, I was able to work with more confidence. I learned how to ask
 The code I am most proud of is my `ShoppingCartController`. I wrote the `GET`, `POST`, `PUT`, and `DELETE` methods to manage a user's shopping cart.
 
 I am proud of this code because it helped me understand how REST APIs work in Spring Boot. Each method uses the logged-in user's information, finds their user id, calls the service layer, and returns the updated shopping cart.
+```java
+@GetMapping
+public ShoppingCart getCart(Principal principal)
+{
+    String userName = principal.getName();
 
+    User user = userService.getByUserName(userName);
+    int userId = user.getId();
+
+    return shoppingCartService.getByUserId(userId);
+}
+
+@PostMapping("/products/{productId}")
+public ResponseEntity<ShoppingCart> addProduct(@PathVariable int productId, Principal principal)
+{
+    String userName = principal.getName();
+
+    User user = userService.getByUserName(userName);
+    int userId = user.getId();
+
+    ShoppingCart cart = shoppingCartService.addProduct(userId, productId);
+
+    return ResponseEntity.status(201).body(cart);
+}
+
+@PutMapping("/products/{productId}")
+public ResponseEntity<ShoppingCart> updateItem(@PathVariable int productId,
+                                               @RequestBody ShoppingCartItem shoppingCartItem,
+                                               Principal principal)
+{
+    String userName = principal.getName();
+
+    User user = userService.getByUserName(userName);
+    int userId = user.getId();
+
+    ShoppingCart cart = shoppingCartService.updateProduct(userId, productId, shoppingCartItem.getQuantity());
+
+    return ResponseEntity.ok(cart);
+}
+
+@DeleteMapping
+public ResponseEntity<ShoppingCart> clearCart(Principal principal)
+{
+    String userName = principal.getName();
+
+    User user = userService.getByUserName(userName);
+    int userId = user.getId();
+
+    ShoppingCart cart = shoppingCartService.clearCart(userId);
+
+    return ResponseEntity.ok(cart);
+}
+```
 ## What I Learned
 
 In this capstone, I learned how to work with an existing Spring Boot project and add new backend features without starting from scratch.
