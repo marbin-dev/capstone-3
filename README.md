@@ -59,3 +59,6 @@ I practiced:
 
 This project helped me understand how the different layers of a backend application work together: controllers receive requests, services handle the logic, repositories talk to the database, and models represent the data.
 
+## Next Time
+Next time, I would like to add more features, improve the efficiency of my code, and continue building projects that can become real world applications published and used by others.
+
