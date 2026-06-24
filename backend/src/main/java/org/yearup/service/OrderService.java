@@ -28,7 +28,7 @@ public class OrderService {
 
         ShoppingCart cart = shoppingCartService.getByUserId(userId);
         if(cart.getItems().isEmpty()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Car is Empty bro");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Cart is Empty bro");
         }
         Profile profile = profileService.getByUserId(userId);
 
