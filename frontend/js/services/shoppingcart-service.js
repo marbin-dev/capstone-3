@@ -15,6 +15,7 @@ class ShoppingCartService {
             .then(response => {
                 this.setCart(response.data);
                 this.updateCartDisplay();
+                alert("Product added to cart!");
             })
             .catch(error => {
                 const data = {
@@ -89,12 +90,23 @@ class ShoppingCartService {
         h1.innerText = "Cart";
         cartHeader.appendChild(h1);
 
-        const button = document.createElement("button");
-        button.classList.add("btn");
-        button.classList.add("btn-danger");
-        button.innerText = "Clear";
-        button.addEventListener("click", () => this.clearCart());
-        cartHeader.appendChild(button);
+        const buttonContainer = document.createElement("div");
+
+        const clearButton = document.createElement("button");
+        clearButton.classList.add("btn");
+        clearButton.classList.add("btn-danger");
+        clearButton.innerText = "Clear";
+        clearButton.addEventListener("click", () => this.clearCart());
+        buttonContainer.appendChild(clearButton);
+
+        const checkoutButton = document.createElement("button");
+        checkoutButton.classList.add("btn");
+        checkoutButton.classList.add("btn-success");
+        checkoutButton.innerText = "Checkout";
+        checkoutButton.addEventListener("click", () => this.checkout());
+        buttonContainer.appendChild(checkoutButton);
+
+        cartHeader.appendChild(buttonContainer);
 
         contentDiv.appendChild(cartHeader);
         main.appendChild(contentDiv);
@@ -172,6 +184,7 @@ class ShoppingCartService {
 
                 this.updateCartDisplay();
                 this.loadCartPage();
+                alert("Cart cleared!");
             })
             .catch(error => {
                 const data = {
@@ -193,6 +206,37 @@ class ShoppingCartService {
         catch (e) {
             // If the cart display is not available, do nothing.
         }
+    }
+
+    checkout()
+    {
+        const url = `${config.baseUrl}/orders`;
+
+        axios.post(url, {})
+            .then(response => {
+                const data = {
+                    message: "Order placed successfully!"
+                };
+
+                templateBuilder.append("message", data, "messages");
+                alert("Checkout successful! Your order has been placed.");
+
+                // Clear the cart after successful checkout
+                this.cart = {
+                    items: [],
+                    total: 0
+                };
+
+                this.updateCartDisplay();
+                this.loadCartPage();
+            })
+            .catch(error => {
+                const data = {
+                    error: "Checkout failed. Please try again."
+                };
+
+                templateBuilder.append("error", data, "errors");
+            });
     }
 }
 
