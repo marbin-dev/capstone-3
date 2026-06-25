@@ -5,32 +5,33 @@ import org.yearup.models.Profile;
 import org.yearup.repository.ProfileRepository;
 
 @Service
-public class ProfileService
-{
+public class ProfileService {
     private final ProfileRepository profileRepository;
 
-    public ProfileService(ProfileRepository profileRepository)
-    {
+    public ProfileService(ProfileRepository profileRepository) {
         this.profileRepository = profileRepository;
     }
 
-    public Profile create(Profile profile)
-    {
+    public Profile create(Profile profile) {
+        // Save a new profile when a user is created.
         return profileRepository.save(profile);
     }
 
-    public  Profile getByUserId(int userId){
+    public Profile getByUserId(int userId) {
+        // Find the profile that belongs to this user.
         return profileRepository.findByUserId(userId);
     }
 
-    public Profile update(int userId, Profile profile){
+    public Profile update(int userId, Profile profile) {
 
+        // Look up the current profile from the database.
         Profile existing = profileRepository.findByUserId(userId);
 
-        if(existing == null){
+        if (existing == null) {
             return null;
         }
 
+        // Copy the updated profile fields onto the existing profile.
         existing.setFirstName(profile.getFirstName());
         existing.setLastName(profile.getLastName());
         existing.setPhone(profile.getPhone());
@@ -40,6 +41,7 @@ public class ProfileService
         existing.setState(profile.getState());
         existing.setZip(profile.getZip());
 
+        // Save and return the updated profile.
         return profileRepository.save(existing);
     }
 }
