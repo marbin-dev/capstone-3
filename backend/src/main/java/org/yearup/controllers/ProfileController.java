@@ -24,22 +24,30 @@ public class ProfileController {
     }
 
     @GetMapping
-    public Profile getProfile(Principal principal){
+    public Profile getProfile(Principal principal) {
+
+        // Get the logged-in user's username from the JWT token.
         String userName = principal.getName();
 
+        // Use the username to find the user id.
         User user = userService.getByUserName(userName);
         int userId = user.getId();
 
+        // Return the profile that belongs to this user.
         return profileService.getByUserId(userId);
     }
 
     @PutMapping
-    public Profile updateProfile(@RequestBody Profile profile,Principal principal){
-        String userName = principal.getName();
-        User user = userService.getByUserName(userName);
+    public Profile updateProfile(@RequestBody Profile profile, Principal principal) {
 
+        // Get the logged-in user's username from the JWT token.
+        String userName = principal.getName();
+
+        // Use the username to find the user id.
+        User user = userService.getByUserName(userName);
         int userId = user.getId();
 
-        return profileService.update(userId,profile);
+        // Update only the profile that belongs to this user.
+        return profileService.update(userId, profile);
     }
 }
