@@ -25,13 +25,18 @@ public class OrderService {
     }
 
     public Order checkout(int userId) {
-
+        // Get the current user's shopping cart.
         ShoppingCart cart = shoppingCartService.getByUserId(userId);
+
+        // Do not create an order if the cart is empty.
         if(cart.getItems().isEmpty()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Cart is Empty bro");
         }
+
+        // Get the user's profile so the order can use their shipping information.
         Profile profile = profileService.getByUserId(userId);
 
+        // Create a new order using the user's profile information.
         Order order = new Order();
         order.setUserId(userId);
         order.setDate(LocalDateTime.now());
@@ -41,8 +46,10 @@ public class OrderService {
         order.setZip(profile.getZip());
         order.setShippingAmount(0);
 
+        // Save the order first so it gets an order id.
         Order saveOrder = orderRepository.save(order);
 
+        // Create one order line item for each item in the cart.
         for (ShoppingCartItem item : cart.getItems().values()) {
             OrderLineItem lineItem = new OrderLineItem();
 
@@ -55,9 +62,10 @@ public class OrderService {
             orderLineItemRepository.save(lineItem);
 
         }
-
+        // Clear the cart after the order is created.
         shoppingCartService.clearCart(userId);
 
+        // Return the saved order to the controller.
         return saveOrder;
     }
 }
