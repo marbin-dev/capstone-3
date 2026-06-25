@@ -30,13 +30,18 @@ public class OrdersController {
 
     @PostMapping
     public ResponseEntity<Order> checkout(Principal principal){
+
+        // Get the logged-in user's username from the JWT token.
         String userName = principal.getName();
 
+        // Use the username to find the user id.
         User user = userService.getByUserName(userName);
         int userId = user.getId();
 
+        // Create an order from this user's current shopping cart.
         Order order = orderService.checkout(userId);
 
+        // Return status 201 because a new order was created.
         return ResponseEntity.status(201).body(order);
     }
 
