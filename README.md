@@ -27,6 +27,18 @@
 - JWT
 - Insomnia
 - IntelliJ IDEA
+
+## Screenshots
+
+### Home Page
+<img src="frontend/screenshots/home-page.png" width="600">
+
+### Cart Page
+<img src="frontend/screenshots/cart-page.png" width="600">
+
+### Profile Page
+<img src="frontend/screenshots/profile-page.png" width="600">
+
 ## My personal challenges
 At the beginning of this academy, I struggled a lot with programming. My first capstone was very challenging, but I was able to complete it and pass.
 
