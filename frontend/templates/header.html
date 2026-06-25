@@ -1,7 +1,7 @@
 
 {{#loggedin}}
 <div id="links">
-    <img src="/images/logo.svg" alt="videogamestore logo">
+    <img class="logo" src="images/logo.svg" alt="video game store logo">
     <a href="#" onclick="loadHome()">Home</a>
     <a href="#" onclick="editProfile()">Profile</a>
     <a href="#" onclick="showCart()">View Cart</a>
@@ -15,13 +15,14 @@
     </div>
 </div>
 {{/loggedin}}
+
 {{#loggedout}}
 <div id="links">
-    <img src="/images/logo.svg" alt="videogamestore logo">
+    <img class="logo" src="images/logo.svg" alt="video game store logo">
     <a href="#" onclick="loadHome()">Home</a>
 </div>
 
 <div>
-    <a href="#"  onclick="showLoginForm();return false;">login</a>
+    <a href="#" onclick="showLoginForm();return false;">login</a>
 </div>
 {{/loggedout}}
