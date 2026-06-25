@@ -1,3 +1,13 @@
+body
+{
+    margin: 0;
+    min-height: 100vh;
+    color: #ffffff;
+    background:
+            radial-gradient(circle at top left, #1b0055, transparent 35%),
+            radial-gradient(circle at bottom right, #003b2f, transparent 35%),
+            linear-gradient(135deg, #050505, #111827, #050505);
+}
 header
 {
     display: flex;
@@ -89,12 +99,20 @@ main
     grid-template-columns: 350px auto;
     margin-top: 15px;
     height: 84vh;
+    color: #ffffff;
 }
 
 main > .filter-box
 {
     width: 350px;
     padding: 15px;
+    margin-left: 10px;
+    border: solid 1px #00ff41;
+    border-radius: 12px;
+    background:
+            linear-gradient(180deg, rgba(10, 10, 10, 0.95), rgba(0, 35, 25, 0.85));
+    box-shadow: 0 0 15px #00ff4166;
+    color: #ffffff;
 }
 
 main #min-price .slider-selection {
@@ -108,6 +126,7 @@ main > .content
     width: 100%;
     height: 84vh;
     overflow: scroll;
+    padding: 10px;
 }
 
 main > .content-form
@@ -229,6 +248,7 @@ main > .content-form .cart-item
 {
     width: 50vw;
 }
+
 
 #errors
 {

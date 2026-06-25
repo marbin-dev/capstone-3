@@ -30,17 +30,29 @@ function showImageDetailForm(product, imageUrl)
 
 function loadHome()
 {
-    templateBuilder.build('home',{},'main')
+    templateBuilder.build('home', {}, 'main');
+
+    let filterBox = document.querySelector(".filter-box");
+
+    if (filterBox != null)
+    {
+        filterBox.style.display = "block";
+    }
 
     productService.search();
     categoryService.getAllCategories(loadCategories);
 }
-
 function editProfile()
 {
+    let filterBox = document.querySelector(".filter-box");
+
+    if (filterBox != null)
+    {
+        filterBox.style.display = "none";
+    }
+
     profileService.loadProfile();
 }
-
 function saveProfile()
 {
     const firstName = document.getElementById("firstName").value;
@@ -68,6 +80,13 @@ function saveProfile()
 
 function showCart()
 {
+    let filterBox = document.querySelector(".filter-box");
+
+    if (filterBox != null)
+    {
+        filterBox.style.display = "none";
+    }
+
     cartService.loadCartPage();
 }
 
