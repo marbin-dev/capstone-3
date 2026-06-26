@@ -1,11 +1,13 @@
 # Marbin's Video Game Online Store 🛒
 
+---
 ## Description
 
 ### This project is a Spring Boot backend API for an e-commerce website. The API supports product browsing, category management, shopping cart features, user profiles, and checkout/order creation.
 
 ### The project uses a layered architecture with controllers, services, repositories, and models. The backend connects to a MySQL database and uses JWT authentication for protected endpoints.
 
+---
 ## Features
 
 - User registration and login
@@ -17,6 +19,8 @@
 - Shopping cart for logged-in users
 - User profile view and update
 - Checkout and order creation
+
+---
 ## Technologies Used
 
 - Java
@@ -28,17 +32,25 @@
 - Insomnia
 - IntelliJ IDEA
 
+---
+
 ## Screenshots
 
 
 ### Home Page
 <img src="frontend/screenshots/home-page.png" width="600">
 
+---
+
 ### Cart Page
 <img src="frontend/screenshots/cart.png" width="600">
 
+---
+
 ### Profile Page
 <img src="frontend/screenshots/profile-page.png" width="600">
+
+---
 
 
 ## My personal challenges
@@ -51,6 +63,8 @@ Now, in this final capstone, one of my biggest challenges was learning how to wo
 Another challenge was debugging API status codes like `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, and `500 Internal Server Error`. This helped me understand authentication, authorization, request bodies, and how to return the correct response from the backend.
 
 For this capstone, I was able to work with more confidence. I learned how to ask better questions, use the right support, and keep debugging until the application worked. This project showed me how much you can learn when you fully commit yourself to the process.
+
+---
 ## Code I Am Most Proud Of
 
 The code I am most proud of is my `ShoppingCartController`. I wrote the `GET`, `POST`, `PUT`, and `DELETE` methods to manage a user's shopping cart.
@@ -109,6 +123,8 @@ public ResponseEntity<ShoppingCart> clearCart(Principal principal)
     return ResponseEntity.ok(cart);
 }
 ```
+
+---
 ## What I Learned
 
 In this capstone, I learned how to work with an existing Spring Boot project and add new backend features without starting from scratch.
@@ -124,6 +140,8 @@ I practiced:
 - Building a shopping cart, profile update, and checkout feature
 
 This project helped me understand how the different layers of a backend application work together: controllers receive requests, services handle the logic, repositories talk to the database, and models represent the data.
+
+---
 
 ## Next Time
 Next time, I would like to add more features, improve the efficiency of my code, and continue building projects that can become real world applications published and used by others.
